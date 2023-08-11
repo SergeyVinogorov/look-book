@@ -1,23 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {Provider} from "react-redux";
-import {store} from "./store";
+import React, {useState} from "react";
+import {createRoot} from 'react-dom/client';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-      <Provider store={store}>
-          <App />
-      </Provider>
-  </React.StrictMode>
-);
+export const App = () => {
+    const [listTasks, setListTasks] = useState([])
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    const handleAddTask = (event) => {
+        event.preventDefault()
+        const task = {
+            name: event.target.name.value,
+            desc: event.target.desc.value
+        }
+        setListTasks([...listTasks, task])
+    }
+
+    return (
+        <div>
+            <form onSubmit={handleAddTask}>
+                <input type='text' name='name'/>
+                <input type='text' name='desc'/>
+                <button type="submit">Add</button>
+            </form>
+            <div>
+                {listTasks.map((task) => {
+                   return( <div>
+                        <h2>{task.name}</h2>
+                        <p>{task.desc}</p>
+                    </div>)
+                })}
+            </div>
+        </div>
+    )
+}
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
