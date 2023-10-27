@@ -19,6 +19,7 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
+    "@nanostores/react": "github:nanostores/react",
     "nanostores": "^0.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

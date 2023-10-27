@@ -1,21 +1,24 @@
-import React, {useState} from "react";
+import { useStore } from '@nanostores/react'
 import {createRoot} from 'react-dom/client';
+import {$tasks} from "./store";
+import {FormEvent} from "react";
+import {addTask} from "./store/tasks";
 
 export const App = () => {
-    const [listTasks, setListTasks] = useState([])
+    const listTasks = useStore($tasks)
 
-    const handleAddTask = (event) => {
+    const handleAddTask = (event:FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const task = {
-            name: event.target.name.value,
-            desc: event.target.desc.value
+            name: event?.target?.name.value,
+            desc: event?.target?.desc.value
         }
-        setListTasks([...listTasks, task])
+        addTask(task)
     }
-
+    console.log(listTasks)
     return (
         <div>
-            <form onSubmit={handleAddTask}>
+            <form onSubmit={(event)=>handleAddTask(event)}>
                 <input type='text' name='name'/>
                 <input type='text' name='desc'/>
                 <button type="submit">Add</button>
@@ -32,5 +35,6 @@ export const App = () => {
     )
 }
 const container = document.getElementById('root');
+// @ts-ignore
 const root = createRoot(container);
 root.render(<App />);

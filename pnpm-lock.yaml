@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@nanostores/react':
+    specifier: github:nanostores/react
+    version: github.com/nanostores/react/b71b8427c9ec9c780083544505495ce7b36b7059(nanostores@0.9.3)(react@18.2.0)
   nanostores:
     specifier: ^0.9.3
     version: 0.9.3
@@ -832,3 +835,17 @@ packages:
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: true
+
+  github.com/nanostores/react/b71b8427c9ec9c780083544505495ce7b36b7059(nanostores@0.9.3)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/nanostores/react/tar.gz/b71b8427c9ec9c780083544505495ce7b36b7059}
+    id: github.com/nanostores/react/b71b8427c9ec9c780083544505495ce7b36b7059
+    name: '@nanostores/react'
+    version: 0.7.1
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0
+      react: '>=18.0.0'
+    dependencies:
+      nanostores: 0.9.3
+      react: 18.2.0
+    dev: false
